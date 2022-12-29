@@ -44,7 +44,8 @@
 
     <scm>
         <connection>scm:git:https://github.com/apache/incubator-seatunnel-datasource-sdk.git</connection>
-        <developerConnection>scm:git:https://github.com/apache/incubator-seatunnel-datasource-sdk.git</developerConnection>
+        <developerConnection>scm:git:https://github.com/apache/incubator-seatunnel-datasource-sdk.git
+        </developerConnection>
         <url>https://github.com/apache/incubator-seatunnel-datasource-sdk</url>
         <tag>HEAD</tag>
     </scm>
@@ -72,4 +73,95 @@
     <modules>
         <module>datasource-client</module>
     </modules>
+
+    <properties>
+        <!--dependency version-->
+        <jackson.version>2.14.0</jackson.version>
+        <lombok.version>1.18.24</lombok.version>
+        <!--maven plugin version-->
+        <maven-checkstyle-plugin.version>3.2.0</maven-checkstyle-plugin.version>
+        <checkstyle.fails.on.error>true</checkstyle.fails.on.error>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-properties</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.12.0</version>
+            </dependency>
+
+        </dependencies>
+
+
+    </dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- checkstyle (Start) -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>${maven-checkstyle-plugin.version}</version>
+                    <configuration>
+                        <!--suppress UnresolvedMavenProperty -->
+                        <configLocation>${maven.multiModuleProjectDirectory}/tools/checkstyle/checkStyle.xml</configLocation>
+                        <consoleOutput>true</consoleOutput>
+                        <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                        <failOnViolation>${checkstyle.fails.on.error}</failOnViolation>
+                        <sourceDirectories>
+                            <sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
+                            <sourceDirectory>${project.build.testSourceDirectory}</sourceDirectory>
+                        </sourceDirectories>
+                        <resourceIncludes>
+                            **/*.properties,
+                            **/*.sh,
+                            **/*.bat,
+                            **/*.yml,
+                            **/*.yaml,
+                            **/*.xml
+                        </resourceIncludes>
+                        <resourceExcludes>
+                            **/.asf.yaml,
+                            **/.github/**
+                        </resourceExcludes>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>validate</id>
+                            <phase>process-sources</phase>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- checkstyle (End) -->
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

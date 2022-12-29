@@ -14,25 +14,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+ 
+package org.apache.seatunnel.datasource.annotation;
 
-package org.apache.seatunnel.datasource.client;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-import org.apache.seatunnel.datasource.service.SeaTunnelAutoTableService;
-import org.apache.seatunnel.datasource.service.SeaTunnelDataSourceService;
-
-import javax.sql.DataSource;
-
-import java.util.concurrent.ConcurrentMap;
-
-public abstract class SeaTunnelDataSource implements SeaTunnelDataSourceService, SeaTunnelAutoTableService {
-
-    /**
-     * The data source. we use this to get the connection.
-     * if you want to use the connection pool, you can use the connection pool to get the connection.
-     */
-    protected DataSource dataSource;
-
-    // do not need to init all plugins?
-    protected ConcurrentMap<String, SeaTunnelAutoTableService> dataSourceMetaDataServicePluginMap;
-
+@Documented
+@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.CLASS)
+public @interface ThreadSafe {
 }
