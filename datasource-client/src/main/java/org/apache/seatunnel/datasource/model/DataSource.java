@@ -15,24 +15,20 @@
  * limitations under the License.
  */
 
-package org.apache.seatunnel.datasource.client;
+package org.apache.seatunnel.datasource.model;
 
-import org.apache.seatunnel.datasource.service.SeaTunnelAutoTableService;
-import org.apache.seatunnel.datasource.service.SeaTunnelDataSourceService;
+import java.util.Map;
 
-import javax.sql.DataSource;
+public class DataSource extends BaseModel {
 
-import java.util.concurrent.ConcurrentMap;
+    private Long id;
 
-public abstract class SeaTunnelDataSource implements SeaTunnelDataSourceService, SeaTunnelAutoTableService {
+    private String dataSourceName;
 
-    /**
-     * The data source. we use this to get the connection.
-     * if you want to use the connection pool, you can use the connection pool to get the connection.
-     */
-    protected DataSource dataSource;
+    private String pluginName;
 
-    // do not need to init all plugins?
-    protected ConcurrentMap<String, SeaTunnelAutoTableService> dataSourceMetaDataServicePluginMap;
+    private String comment;
+
+    private Map<String, Object> params;
 
 }

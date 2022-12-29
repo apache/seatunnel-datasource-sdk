@@ -15,24 +15,26 @@
  * limitations under the License.
  */
 
-package org.apache.seatunnel.datasource.client;
+package org.apache.seatunnel.datasource.configuration.util;
 
-import org.apache.seatunnel.datasource.service.SeaTunnelAutoTableService;
-import org.apache.seatunnel.datasource.service.SeaTunnelDataSourceService;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-import javax.sql.DataSource;
-
-import java.util.concurrent.ConcurrentMap;
-
-public abstract class SeaTunnelDataSource implements SeaTunnelDataSourceService, SeaTunnelAutoTableService {
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Target(ElementType.FIELD)
+public @interface OptionMark {
 
     /**
-     * The data source. we use this to get the connection.
-     * if you want to use the connection pool, you can use the connection pool to get the connection.
+     * The key of the option, if not configured, we will default convert `lowerCamelCase` to `under_score_case` and provide it to users
      */
-    protected DataSource dataSource;
+    String name() default "";
 
-    // do not need to init all plugins?
-    protected ConcurrentMap<String, SeaTunnelAutoTableService> dataSourceMetaDataServicePluginMap;
-
+    /**
+     * The description of the option
+     */
+    String description() default "";
 }
