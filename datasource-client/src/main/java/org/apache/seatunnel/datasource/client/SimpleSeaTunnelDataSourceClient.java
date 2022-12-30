@@ -39,12 +39,12 @@ public class SimpleSeaTunnelDataSourceClient extends AbstractSeaTunnelDataSource
     }
 
     @Override
-    public OptionRule queryDataSourceFieldByName(String dataSourceName) {
+    public OptionRule queryDataSourceFieldByName(String pluginName) {
         return null;
     }
 
     @Override
-    public Boolean checkDataSourceFields(Map<String, Object> parameters) {
+    public Boolean checkDataSourceFields(String pluginName, Map<String, Object> parameters) {
         return null;
     }
 
@@ -55,21 +55,21 @@ public class SimpleSeaTunnelDataSourceClient extends AbstractSeaTunnelDataSource
 
     @Override
     public Boolean saveDataSource(String dataSourceName, String comment, String pluginName, Map<String, Object> parameters) {
-        return false;
+        return null;
     }
 
     @Override
     public Boolean deleteDataSource(Long id) {
-        return false;
+        return null;
     }
 
     @Override
     public Boolean updateDataSource(Long dataSourceId, String dataSourceName, String comment, Map<String, Object> parameters) {
-        return false;
+        return null;
     }
 
     @Override
-    public Boolean checkDataSourceConnectivity(Map<String, Object> dataSourceParams) {
+    public Boolean checkDataSourceConnectivity(String pluginName, Map<String, Object> dataSourceParams) {
         return null;
     }
 }

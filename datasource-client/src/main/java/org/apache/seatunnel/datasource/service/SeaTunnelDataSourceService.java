@@ -26,19 +26,76 @@ import java.util.Map;
 
 public interface SeaTunnelDataSourceService {
 
+    /**
+     * get all data source plugins
+     *
+     * @return data source plugins info
+     */
     List<DataSourcePluginInfo> listAllDataSources();
 
-    OptionRule queryDataSourceFieldByName(String dataSourceName);
+    /**
+     * get data source plugin fields
+     *
+     * @param pluginName data source name
+     * @return data source plugin fields
+     */
+    OptionRule queryDataSourceFieldByName(String pluginName);
 
-    Boolean checkDataSourceFields(Map<String, Object> parameters);
+    /**
+     * check data source params is valid and connectable
+     *
+     * @param parameters data source params
+     *                   eg mysql plugin
+     *                   key: url // jdbc url
+     *                   key: username
+     *                   key: password
+     *                   other key...
+     * @return true if valid, false if invalid
+     */
+    Boolean checkDataSourceFields(String pluginName, Map<String, Object> parameters);
 
     DataSource queryDataSourceById(Long dataSourceId);
 
+    /**
+     * save data source
+     *
+     * @param dataSourceName data source name
+     * @param comment        data source comment
+     * @param pluginName     data source plugin name
+     * @param parameters     data source params
+     *                       eg mysql plugin
+     *                       key: url // jdbc url
+     *                       key: username
+     *                       key: password
+     *                       other key...
+     * @return save result
+     */
     Boolean saveDataSource(String dataSourceName, String comment, String pluginName, Map<String, Object> parameters);
 
+    /**
+     * delete data source, only set delete flag, we don't really delete data.
+     *
+     * @param id data source id
+     * @return delete result
+     */
     Boolean deleteDataSource(Long id);
 
+    /**
+     * update data source
+     *
+     * @param dataSourceId   data source id
+     * @param dataSourceName data source name
+     * @param comment        data source comment
+     * @param parameters     data source params
+     * @return update result
+     */
     Boolean updateDataSource(Long dataSourceId, String dataSourceName, String comment, Map<String, Object> parameters);
 
-    Boolean checkDataSourceConnectivity(Map<String, Object> dataSourceParams);
+    /**
+     * we can use this method to check data source connectivity
+     *
+     * @param dataSourceParams data source params
+     * @return check result
+     */
+    Boolean checkDataSourceConnectivity(String pluginName, Map<String, Object> dataSourceParams);
 }
