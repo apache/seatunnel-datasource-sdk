@@ -17,6 +17,8 @@
 
 package org.apache.seatunnel.datasource.model;
 
+import java.util.Date;
+
 public class BaseModel {
 
     /**
