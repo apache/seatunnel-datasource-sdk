@@ -19,9 +19,15 @@ package org.apache.seatunnel.datasource.model;
 
 public class BaseModel {
 
-    private Long createdTime;
+    /**
+     * create time
+     */
+    private Date createTime;
 
-    private Long updatedTime;
+    /**
+     * update time
+     */
+    private Date updateTime;
 
     private Boolean deleted;
 }
