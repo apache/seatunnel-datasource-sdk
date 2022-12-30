@@ -34,46 +34,6 @@ public class SeaTunnelDataSourceClient extends AbstractSeaTunnelDataSourceClient
     }
 
     @Override
-    public List<DataSourcePluginInfo> listAllDataSources() {
-        return null;
-    }
-
-    @Override
-    public OptionRule queryDataSourceFieldByName(String dataSourceName) {
-        return null;
-    }
-
-    @Override
-    public Boolean checkDataSourceFields(Map<String, Object> parameters) {
-        return null;
-    }
-
-    @Override
-    public DataSource queryDataSourceById(Long dataSourceId) {
-        return null;
-    }
-
-    @Override
-    public Boolean saveDataSource(String dataSourceName, String comment, String pluginName, Map<String, Object> parameters) {
-        return false;
-    }
-
-    @Override
-    public Boolean deleteDataSource(Long id) {
-        return false;
-    }
-
-    @Override
-    public Boolean updateDataSource(Long dataSourceId, String dataSourceName, String comment, Map<String, Object> parameters) {
-        return false;
-    }
-
-    @Override
-    public Boolean checkDataSourceConnectivity(Map<String, Object> dataSourceParams) {
-        return null;
-    }
-
-    @Override
     public OptionRule getDataSourceMetadataFieldsByDataSourceName(String dataSourceName) {
         return null;
     }
@@ -95,6 +55,46 @@ public class SeaTunnelDataSourceClient extends AbstractSeaTunnelDataSourceClient
 
     @Override
     public Table getTable(String dataSourceId, Map<String, Object> requestParams) {
+        return null;
+    }
+
+    @Override
+    public List<DataSourcePluginInfo> listAllDataSources() {
+        return null;
+    }
+
+    @Override
+    public OptionRule queryDataSourceFieldByName(String pluginName) {
+        return null;
+    }
+
+    @Override
+    public Boolean checkDataSourceFields(String pluginName, Map<String, Object> parameters) {
+        return null;
+    }
+
+    @Override
+    public DataSource queryDataSourceById(Long dataSourceId) {
+        return null;
+    }
+
+    @Override
+    public Boolean saveDataSource(String dataSourceName, String comment, String pluginName, Map<String, Object> parameters) {
+        return null;
+    }
+
+    @Override
+    public Boolean deleteDataSource(Long id) {
+        return null;
+    }
+
+    @Override
+    public Boolean updateDataSource(Long dataSourceId, String dataSourceName, String comment, Map<String, Object> parameters) {
+        return null;
+    }
+
+    @Override
+    public Boolean checkDataSourceConnectivity(String pluginName, Map<String, Object> dataSourceParams) {
         return null;
     }
 
